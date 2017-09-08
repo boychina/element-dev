@@ -1,180 +1,72 @@
-<p align="center">
-  <img src="https://cdn.rawgit.com/ElemeFE/element/dev/element_logo.svg">
-</p>
+# 使用方法
 
-# Element
+Hello，这份代码是在项目中使用的element-UI的1.3.7版本，根据项目需要修改过一部分代码，所以将其保存到github上面。
 
-[![Build Status](https://travis-ci.org/ElemeFE/element.svg?branch=master)](https://travis-ci.org/ElemeFE/element)
-[![Coverage Status](https://coveralls.io/repos/github/ElemeFE/element/badge.svg?branch=master)](https://coveralls.io/github/ElemeFE/element?branch=master)
-[![CDNJS](https://img.shields.io/cdnjs/v/element-ui.svg)](https://cdnjs.com/libraries/element-ui)
-[![npm package](https://img.shields.io/npm/v/element-ui.svg)](https://www.npmjs.org/package/element-ui)
-[![NPM downloads](http://img.shields.io/npm/dm/element-ui.svg)](https://npmjs.org/package/element-ui)
-![JS gzip size](http://img.badgesize.io/https://unpkg.com/element-ui/lib/index.js?compression=gzip&label=gzip%20size:%20JS)
-![CSS gzip size](http://img.badgesize.io/https://unpkg.com/element-ui/lib/theme-default/index.css?compression=gzip&label=gzip%20size:%20CSS)
-[![Join the chat at https://gitter.im/ElemeFE/element](https://badges.gitter.im/ElemeFE/element.svg)](https://gitter.im/ElemeFE/element?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)(Chinese)
-[![Join the chat at https://gitter.im/element-en/Lobby](https://badges.gitter.im/element-en/Lobby.svg)](https://gitter.im/element-en/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)(English)
-[![OpenCollective](https://opencollective.com/element/backers/badge.svg)](#backers) 
-[![OpenCollective](https://opencollective.com/element/sponsors/badge.svg)](#sponsors)
+使用的方式可以参考下面的官方开发者指南的内容。
 
-> A Vue.js 2.0 UI Toolkit for Web.
+# Element UI 贡献指南
 
-<p align="center">
-  <b>Special thanks to the generous sponsorship by:</b>
-  <br><br>
-  <a href="https://laravist.com">
-    <img width="300px" src="https://fuss10.elemecdn.com/4/87/c072c1651b0efd1c5cde39bc8b422png.png">
-  </a>
-</p>
+Hi! 首先感谢你使用 Element UI。
 
-## Links
-- [Home Page](http://element.eleme.io/)
-- [Docs](http://element.eleme.io/#/component)
-- [awesome-element](https://github.com/ElementUI/awesome-element)
-- [FAQ](./FAQ.md)
-- [Customize Theme](http://element.eleme.io/#/en-US/component/custom-theme)
-- [Preview and generate theme online](https://elementui.github.io/theme-preview)
-- [Element for React](https://github.com/eleme/element-react)
-- [Atom helper](https://github.com/ElemeFE/element-helper)
-- Starter Kit
-  - [element-starter](https://github.com/ElementUI/element-starter)
-  - [element-cooking-starter](https://github.com/ElementUI/element-cooking-starter)
-  - [element-in-laravel-starter](https://github.com/ElementUI/element-in-laravel-starter)
-- [Design resources](https://github.com/ElementUI/Resources)
-- Boilerplate for bug reports
-  - [CodePen](https://codepen.io/anon/pen/ozYpNA)
-  - [JSFiddle](https://jsfiddle.net/gmve9d3p/)
-- [Mint UI](https://github.com/ElemeFE/mint-ui) - Mobile UI elements for Vue.js
+Element UI 是一套为开发者、设计师和产品经理准备的开源组件库，旨在快速搭建页面。它基于 Vue 2.0 开发，并提供了配套的设计资源，充分满足可定制化的需求。
 
-## Install
+Element UI 的成长离不开大家的支持，如果你愿意为 Element UI 贡献代码或提供建议，请阅读以下内容。
+
+## Issue 规范
+- issue 仅用于提交 Bug 或 Feature 以及设计相关的内容，其它内容可能会被直接关闭。如果你在使用时产生了疑问，请到 Slack 或 [Gitter](https://gitter.im/ElemeFE/element) 里咨询。
+
+- 在提交 issue 之前，请搜索相关内容是否已被提出。
+
+- 请说明 Element UI 和 Vue 的版本号，并提供操作系统和浏览器信息。推荐使用 [JSFiddle](https://jsfiddle.net/) 生成在线 demo，这能够更直观地重现问题。
+
+## Pull Request 规范
+- 请先 fork 一份到自己的项目下，不要直接在仓库下建分支。
+
+- commit 信息要以`[组件名]: 描述信息` 的形式填写，例如 `Button: fix xxx bug`。
+
+- **不要提交** `lib` 里面打包的文件。
+
+- 执行 `npm run dist` 后可以正确打包文件。
+
+- 为了兼容性以及最终打包的文件体积考虑，我们的 babel 只引入了 `preset-2015`，所以不建议使用 ES2015 的 API，例如 `Array.prototype.find`、`Object.assign`等。如果有需要，请引入第三方的 polyfill。
+
+- 提交 PR 前请 rebase，确保 commit 记录的整洁。
+
+- 确保 PR 是提交到 `dev` 分支，而不是 `master` 分支。
+
+- 如果是修复 bug，请在 PR 中给出描述信息。
+
+- 合并代码需要两名维护人员参与：一人进行 review 后 approve，另一人再次 review，通过后即可合并。
+
+## 开发环境搭建
+首先你需要 Node.js 4+ 和 NPM 3+
 ```shell
-npm install element-ui -S
+git clone git@github.com:ElemeFE/element.git
+npm run dev
+
+# open http://localhost:8085
 ```
 
-## Quick Start
-``` javascript
-import Vue from 'vue'
-import Element from 'element-ui'
+如果国内用户觉得安装慢可以使用 [yarn](https://github.com/yarnpkg/yarn) 搭配 taobao registry
+```shell
+npm i yarn -g
+yarn config set registry https://registry.npm.taobao.org
+yarn
+npm run dev
 
-Vue.use(Element)
-
-// or
-import {
-  Select,
-  Button
-  // ...
-} from 'element-ui'
-
-Vue.component(Select.name, Select)
-Vue.component(Button.name, Button)
+# open http://localhost:8085
 ```
-For more information, please refer to [Quick Start](http://element.eleme.io/#/en-US/component/quickstart) in our documentation.
 
-## Browser Support
-Modern browsers and Internet Explorer 9+.
+To build:
 
-## Development
-Skip this part if you just want to use Element.
+```shell
+npm run dist
+```
 
-For those who are interested in contributing to Element, please refer to our contributing guide ([中文](https://github.com/ElemeFE/element/blob/master/.github/CONTRIBUTING.zh-CN.md) | [English](https://github.com/ElemeFE/element/blob/master/.github/CONTRIBUTING.en-US.md)) to see how to run this project.
+## 组件开发规范
+- 通过 `make new` 创建组件目录结构，包含测试代码、入口文件、cooking 配置、package.json、文档
+- 如果包含父子组件，需要更改目录结构，参考 `Button`
+- 组件内如果依赖了其他组件，需要在当前组件内引入，参考 `Select`
 
-## Changelog
-Detailed changes for each release are documented in the [release notes](https://github.com/ElemeFE/element/releases).
-
-## FAQ
-We have collected some [frequently asked questions](https://github.com/ElemeFE/element/blob/master/FAQ.md). Before reporting an issue, please search if the FAQ has the answer to your problem.
-
-## Contribution
-Please make sure to read the contributing guide ([中文](https://github.com/ElemeFE/element/blob/master/.github/CONTRIBUTING.zh-CN.md) | [English](https://github.com/ElemeFE/element/blob/master/.github/CONTRIBUTING.en-US.md)) before making a pull request.
-
-## Special Thanks
-English documentation is brought to you by SwiftGG Translation Team. Our special thanks go to these fellows:
-- [raychenfj](https://github.com/raychenfj)
-- [kevin](http://thekevin.cn/)
-- [曾小涛](https://github.com/zengxiaotao)
-- [湾仔王二](https://github.com/wanzaiwanger)
-- [BlooDLine](http://www.ibloodline.com/)
-- [陈铭嘉](https://chenmingjia.github.io/)
-- [千叶知风](http://mpc6.com/)
-- [梁杰](http://numbbbbb.com)
-- [Changing](https://github.com/sunzhuo11)
-- [mmoaay](https://github.com/mmoaay)
-
-## Donation
-If you find Element useful, you can buy us a cup of coffee
-<img width="650" src="http://fuss10.elemecdn.com/2/d0/ab1b8e5a1d96bcdcd6092ce0c66ecjpeg.jpeg?t=2017" alt="">
-
-## Backers
-
-Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/element#backer)]
-
-<a href="https://opencollective.com/element/backer/0/website" target="_blank"><img src="https://opencollective.com/element/backer/0/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/1/website" target="_blank"><img src="https://opencollective.com/element/backer/1/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/2/website" target="_blank"><img src="https://opencollective.com/element/backer/2/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/3/website" target="_blank"><img src="https://opencollective.com/element/backer/3/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/4/website" target="_blank"><img src="https://opencollective.com/element/backer/4/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/5/website" target="_blank"><img src="https://opencollective.com/element/backer/5/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/6/website" target="_blank"><img src="https://opencollective.com/element/backer/6/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/7/website" target="_blank"><img src="https://opencollective.com/element/backer/7/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/8/website" target="_blank"><img src="https://opencollective.com/element/backer/8/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/9/website" target="_blank"><img src="https://opencollective.com/element/backer/9/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/10/website" target="_blank"><img src="https://opencollective.com/element/backer/10/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/11/website" target="_blank"><img src="https://opencollective.com/element/backer/11/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/12/website" target="_blank"><img src="https://opencollective.com/element/backer/12/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/13/website" target="_blank"><img src="https://opencollective.com/element/backer/13/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/14/website" target="_blank"><img src="https://opencollective.com/element/backer/14/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/15/website" target="_blank"><img src="https://opencollective.com/element/backer/15/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/16/website" target="_blank"><img src="https://opencollective.com/element/backer/16/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/17/website" target="_blank"><img src="https://opencollective.com/element/backer/17/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/18/website" target="_blank"><img src="https://opencollective.com/element/backer/18/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/19/website" target="_blank"><img src="https://opencollective.com/element/backer/19/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/20/website" target="_blank"><img src="https://opencollective.com/element/backer/20/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/21/website" target="_blank"><img src="https://opencollective.com/element/backer/21/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/22/website" target="_blank"><img src="https://opencollective.com/element/backer/22/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/23/website" target="_blank"><img src="https://opencollective.com/element/backer/23/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/24/website" target="_blank"><img src="https://opencollective.com/element/backer/24/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/25/website" target="_blank"><img src="https://opencollective.com/element/backer/25/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/26/website" target="_blank"><img src="https://opencollective.com/element/backer/26/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/27/website" target="_blank"><img src="https://opencollective.com/element/backer/27/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/28/website" target="_blank"><img src="https://opencollective.com/element/backer/28/avatar.svg"></a>
-<a href="https://opencollective.com/element/backer/29/website" target="_blank"><img src="https://opencollective.com/element/backer/29/avatar.svg"></a>
-
-
-## Sponsors
-
-Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/element#sponsor)]
-
-<a href="https://opencollective.com/element/sponsor/0/website" target="_blank"><img src="https://opencollective.com/element/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/1/website" target="_blank"><img src="https://opencollective.com/element/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/2/website" target="_blank"><img src="https://opencollective.com/element/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/3/website" target="_blank"><img src="https://opencollective.com/element/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/4/website" target="_blank"><img src="https://opencollective.com/element/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/5/website" target="_blank"><img src="https://opencollective.com/element/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/6/website" target="_blank"><img src="https://opencollective.com/element/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/7/website" target="_blank"><img src="https://opencollective.com/element/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/8/website" target="_blank"><img src="https://opencollective.com/element/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/9/website" target="_blank"><img src="https://opencollective.com/element/sponsor/9/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/10/website" target="_blank"><img src="https://opencollective.com/element/sponsor/10/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/11/website" target="_blank"><img src="https://opencollective.com/element/sponsor/11/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/12/website" target="_blank"><img src="https://opencollective.com/element/sponsor/12/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/13/website" target="_blank"><img src="https://opencollective.com/element/sponsor/13/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/14/website" target="_blank"><img src="https://opencollective.com/element/sponsor/14/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/15/website" target="_blank"><img src="https://opencollective.com/element/sponsor/15/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/16/website" target="_blank"><img src="https://opencollective.com/element/sponsor/16/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/17/website" target="_blank"><img src="https://opencollective.com/element/sponsor/17/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/18/website" target="_blank"><img src="https://opencollective.com/element/sponsor/18/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/19/website" target="_blank"><img src="https://opencollective.com/element/sponsor/19/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/20/website" target="_blank"><img src="https://opencollective.com/element/sponsor/20/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/21/website" target="_blank"><img src="https://opencollective.com/element/sponsor/21/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/22/website" target="_blank"><img src="https://opencollective.com/element/sponsor/22/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/23/website" target="_blank"><img src="https://opencollective.com/element/sponsor/23/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/24/website" target="_blank"><img src="https://opencollective.com/element/sponsor/24/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/25/website" target="_blank"><img src="https://opencollective.com/element/sponsor/25/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/26/website" target="_blank"><img src="https://opencollective.com/element/sponsor/26/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/27/website" target="_blank"><img src="https://opencollective.com/element/sponsor/27/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/28/website" target="_blank"><img src="https://opencollective.com/element/sponsor/28/avatar.svg"></a>
-<a href="https://opencollective.com/element/sponsor/29/website" target="_blank"><img src="https://opencollective.com/element/sponsor/29/avatar.svg"></a>
-
-
-
-## LICENSE
-MIT
+## 代码规范
+遵循饿了么前端的 [ESLint](https://github.com/ElemeFE/eslint-config-elemefe) 即可
