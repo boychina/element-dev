@@ -1,11 +1,5 @@
 node_modules
-.DS_Store
 npm-debug.log
 lerna-debug.log
 npm-debug.log.*
 lerna-debug.log.*
-.idea
-examples/element-ui
-fe.element/element-ui
-.npmrc
-coverage
